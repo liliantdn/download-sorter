@@ -44,9 +44,8 @@ function get_prefs() {
 get_prefs();
 
 browser.storage.onChanged.addListener(get_prefs);
-
+const directory_separator = '\\'; //FIXME
 function getFilename(path){
-    const directory_separator = '\\'; //FIXME
     return path.substring(path.lastIndexOf(directory_separator) + 1);
 }
 function match(path) {
@@ -64,6 +63,7 @@ function match(path) {
 }
 
 function rewrite(filter, url_string, path) {
+    //Need to figure out a way to remove (1) from filenames
     let filename = getFilename(path);
     console.log(filename);
     // let url = new URL(url_string);
