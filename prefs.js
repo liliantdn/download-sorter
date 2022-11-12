@@ -9,6 +9,11 @@ function filter_element(p) {
 function new_filter() {
     let e = document.getElementById('filters');
     e.appendChild(filter_element({regexp: '', folder: ''}));
+    save_prefs();
+}
+function delete_filter(e){
+    $(e.target).parents(".filter").remove();
+    save_prefs();
 }
 
 function save_prefs() {
@@ -22,19 +27,23 @@ function save_prefs() {
     }
     
     browser.storage.sync.set({'prefs': prefs});
+    console.log("Saved preferences");
 }
 
 function load() {
-    let e = document.getElementById('filters');
-    e.innerHTML = "";
+    let e = $('#filters');
+    e.html("");
     browser.storage.sync.get({'prefs': {filters: []}}).then((v) => {
             for (let filter of v.prefs.filters) {
-                e.appendChild(filter_element(filter));
+                e.append(filter_element(filter));
             }
         });
     
 };
 
 window.addEventListener('load', load);
-document.getElementById('save').addEventListener('click', save_prefs);
-document.getElementById('new').addEventListener('click', new_filter);
+$("#save").click(save_prefs);
+$("#new").click(new_filter);
+$("#filters")
+    .on("click",".delete-button",delete_filter)
+    .on("change","input",save_prefs);

@@ -1,24 +1,41 @@
 <!DOCTYPE html>
 
 <html>
-  <head>
-    <meta charset="utf-8">
-    <style>
+
+<head>
+  <meta charset="utf-8">
+  <style>
+    #save,
     #filter_prototype {
-        display: none;
+      display: none;
     }
-    </style>
-  </head>
+    .filter{
+      margin-bottom:5px;
+    }
+  </style>
+</head>
+
 <body>
-filters:
-<div class=filter id=filter_prototype>
-    <label>regexp: <input type=text class=regexp></label>
-    <label>folder: <input type=text class=folder></label>
-</div>
-<div id=filters>
-</div>
-<button id=new>+</button>
-<button id=save>Save</button>
+  <h3>Info:</h3>
+  <span>Blah some info about how to add filters.</span>
+  <h3>Filters:</h3>
+  <div class="filter" id="filter_prototype">
+    <label>regexp: <input type="text" class="regexp"></label>
+    <label>folder: <input type="text" class="folder"></label>
+    <button class="delete-button">x</button>
+  </div>
+  <div id="filters">
+  </div>
+  
+  <div class="action-buttons">
+    <button id="new">+ Add filter</button>
+    <button id="save">Save</button>
+  </div>
+  <h3>Credits:</h3>
+  <a href="https://github.com/mdejean/download-renamer">Marcel Dejean - download-renamer</a>
+
 </body>
-<script src=prefs.js></script>
+<script src="jquery-3.6.0.min.js"></script>
+<script src="prefs.js"></script>
+
 </html>
