@@ -44,10 +44,16 @@ function get_prefs() {
 get_prefs();
 
 browser.storage.onChanged.addListener(get_prefs);
-const directory_separator = '\\'; //FIXME
+
+var directory_separator = '\\'; //FIXME
+
 function getFilename(path){
+    if (path.indexOf('\/') > -1){ //attempt to fix above issue
+        directory_separator = '\/';
+    }
     return path.substring(path.lastIndexOf(directory_separator) + 1);
 }
+
 function match(path) {
     // let url = new URL(url_string);
     console.log(getFilename(path));
@@ -74,9 +80,7 @@ function rewrite(filter, url_string, path) {
 }
 
 function rename_download(item) {
-    console.log(item);
     let filter = match(item.filename);
-    // console.log(filter);
     if (filter) {
         c.success("","Match found.")
         c.log("Filename",getFilename(item.filename));

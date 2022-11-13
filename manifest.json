@@ -1,6 +1,6 @@
 {
     "name": "Download Sorter",
-    "description": "Categorize or rename downloads based on their file type",
+    "description": "Categorize downloads based on their filenames.",
     "homepage_url": "https://github.com/liliantdn/download-sorter",
     "manifest_version": 2,
     "version": "0.1",

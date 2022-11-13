@@ -4,35 +4,63 @@
 
 <head>
   <meta charset="utf-8">
-  <style>
-    #save,
-    #filter_prototype {
-      display: none;
-    }
-    .filter{
-      margin-bottom:5px;
-    }
-  </style>
+  <link rel="stylesheet" href="fonts.css">
+  <link rel="stylesheet" href="prefs.css">
 </head>
 
 <body>
-  <h3>Info:</h3>
+  <h4>Info:</h4>
   <span>Blah some info about how to add filters.</span>
-  <h3>Filters:</h3>
-  <div class="filter" id="filter_prototype">
-    <label>regexp: <input type="text" class="regexp"></label>
-    <label>folder: <input type="text" class="folder"></label>
-    <button class="delete-button">x</button>
+  <h4>Filters:</h4>
+  <div class="filter table-row" id="filter_prototype">
+    <div class="table-column stretch"><input type="text" class="regexp" placeholder="\.(mp3|wav|flac)$"></div>
+    <div class="table-column stretch"><input type="text" class="folder"></div>
+    <div class="table-column filter-actions" style="max-width:90px">
+      <button action="move_up">
+        <icon style="--size:16px;--icon:url('icons/move-up.svg')"></icon>
+      </button>
+      <button action="move_down">
+        <icon style="--size:16px;--icon:url('icons/move-down.svg')"></icon>
+      </button>
+      <button action="delete">
+        <icon style="--size:16px;--icon:url('icons/trash.svg')"></icon>
+      </button>
+    </div>
   </div>
-  <div id="filters">
+  <div class="table-header">
+    <div class="header-column stretch">Regular Expression</div>
+    <div class="header-column stretch">Folder</div>
+    <div class="header-column " style="max-width:90px">Actions</div>
   </div>
-  
+  <div id="filters" class="table">
+  </div>
+
   <div class="action-buttons">
-    <button id="new">+ Add filter</button>
+    <button id="new"><icon inline style="--size:16px;--icon:url('icons/plus.svg')"></icon> Add filter</button>
+    <select id="template">
+      <option value="" selected disabled hidden>Templates</option>
+      <option value="image">Images</option>
+      <option value="video">Videos</option>
+      <option value="audio">Audio files</option>
+      <option value="doc">Documents</option>
+      <option value="zip">Archives</option>
+      <option value="ext">File extension</option>
+      <option value="dup">Duplicate files</option>
+    </select>
     <button id="save">Save</button>
   </div>
-  <h3>Credits:</h3>
-  <a href="https://github.com/mdejean/download-renamer">Marcel Dejean - download-renamer</a>
+  <h4>Test:</h4>
+  <input type="text" id="test_filters" placeholder="mytestfile.png">
+  <h4>Plugin source:</h4>
+  <a href="https://github.com/liliantdn/download-sorter">Github</a>
+  <h4>Credits:</h4>
+  <li>
+    <a href="https://github.com/mdejean/download-renamer">Marcel Dejean - download-renamer</a>
+  </li>
+  <li>
+    <a href="https://tabler-icons.io/">Tabler icons</a>
+  </li>
+  
 
 </body>
 <script src="jquery-3.6.0.min.js"></script>
